@@ -5,6 +5,26 @@ const app = express();
 const port = 3000;
 const db = new MockData();
 
+
+app.get("/section/:sectionId", (req, res) => {
+    const sectionId = req.params.sectionId;
+    if (!db._validateSectionId(sectionId)) {
+      const notFound = {
+        status: "error",
+        message: "Invalid Section Id!",
+      };
+      res.status(404).json(notFound);
+    } else {
+      const data = {
+        status: "success",
+        message:`Section: ${sectionId} found!`,
+        data: db.allContentBySectionId(sectionId),
+      };
+      res.status(200).json(data);
+    }
+  });
+
+
 app.use(function (req, res) {
   res.status(404).json({
     message:
