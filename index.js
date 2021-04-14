@@ -5,7 +5,7 @@ const app = express();
 const port = 3000;
 const db = new MockData();
 
-app.get("/section/:sectionId", (req, res) => {
+app.get("/section/:sectionId(\\d+)", (req, res) => {
   const sectionId = req.params.sectionId;
   if (!db._validateSectionId(sectionId)) {
     const notFound = {
@@ -23,7 +23,7 @@ app.get("/section/:sectionId", (req, res) => {
   }
 });
 
-app.get("/section/:sectionId/content/:contentId", (req, res) => {
+app.get("/section/:sectionId(\\d+)/content/:contentId(\\d+)", (req, res) => {
   const sectionId = req.params.sectionId;
   const contentId = req.params.contentId;
   if (!db._validateSectionId(sectionId)) {
