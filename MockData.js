@@ -27,6 +27,24 @@ class MockData {
    */
   constructor(dummy = dummyData) {
     this._dummyData = dummy;
+    this._sectionId = 0;
+    this._contentId = 0;
+  }
+
+  /**
+   * Set a Session Id to be used.
+   * @param {Number} sectionId - The Section Id to be set.
+   */
+  _setSectionId(sectionId) {
+    this._sectionId = parseInt(sectionId - 1);
+  }
+
+  /**
+   * set a specific Content Id to be used.
+   * @param {Number} contentId - The Content Id of the Data needed.
+   */
+  _setContentId(contentId) {
+    this._contentId = parseInt(contentId - 1);
   }
 
   /**
