@@ -48,11 +48,50 @@ class MockData {
   }
 
   /**
+   * Validates a Session Id.
+   * @param {Number} sectionId - The Section Id to be validated.
+   * @returns {Boolean}
+   */
+  _validateSectionId(sectionId) {
+    let status = false;
+    if (parseInt(sectionId) < 1) {
+      status = false;
+    } else if (parseInt(sectionId) > this._dummyData.length) {
+      status = false;
+    } else {
+      status = true;
+    }
+    return status;
+  }
+  /**
+   * Validates a Session Id and Content Id to be used.
+   * @param {Number} sectionId - The Section Id to be validated.
+   * @param {Number} contentId - The Content Id to be validated.
+   * @returns {Boolean}
+   */
+  _validateContentId(sectionId, contentId) {
+    let status = false;
+    if (!this._validateSectionId(sectionId)) {
+      status = false;
+      return status;
+    }
+    if (contentId < 1) {
+      status = false;
+    } else if (contentId > this._dummyData[this._sectionId].content.length) {
+      status = false;
+    } else {
+      status = true;
+    }
+    return status;
+  }
+
+  /**
    * Returns a list of all available data.
    * @returns {Array.<{content: String[]}>}
    */
   allData() {
     return this._dummyData;
   }
+
 
 }
