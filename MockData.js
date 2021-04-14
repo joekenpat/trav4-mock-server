@@ -19,3 +19,22 @@ const dummyData = [
   },
 ];
 
+class MockData {
+  /**
+   * Initialise this class
+   * and loads the dummy data.
+   * @constructor
+   */
+  constructor(dummy = dummyData) {
+    this._dummyData = dummy;
+  }
+
+  /**
+   * Returns a list of all available data.
+   * @returns {Array.<{content: String[]}>}
+   */
+  allData() {
+    return this._dummyData;
+  }
+
+}
