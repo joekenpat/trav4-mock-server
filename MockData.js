@@ -122,5 +122,6 @@ class MockData {
     }
     return this._dummyData[this._sectionId].content[this._contentId];
   }
-
 }
+
+export default MockData;
