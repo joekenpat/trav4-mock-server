@@ -93,5 +93,34 @@ class MockData {
     return this._dummyData;
   }
 
+  /**
+   * Returns all content data
+   * for a specific section or {false} for {params}.
+   * @param {Number} sectionId - The Section Id of the Data needed.
+   * @returns {{content: String[]}|Boolean}
+   */
+  allContentBySectionId(sectionId = 1) {
+    if (this._validateSectionId(sectionId)) {
+      this._setSectionId(sectionId);
+      return this._dummyData[this._sectionId];
+    } else {
+      return false;
+    }
+  }
+
+  /**
+   * Returns a specific content data
+   * for a specific section or {false} for Invalid {params}.
+   * @param {Number} sectionId - The Section Id of the Data needed.
+   * @param {Number} contentId - The Content Id of the Data needed.
+   * @returns {String|Boolean}
+   */
+  contentBySectionIdAndContentId(sectionId = 1, contentId = 1) {
+    if (this._validateContentId(sectionId, contentId)) {
+      this._setSectionId(sectionId);
+      this._setContentId(contentId);
+    }
+    return this._dummyData[this._sectionId].content[this._contentId];
+  }
 
 }
